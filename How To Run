@@ -1,0 +1,2 @@
+php artisan serve for server
+npm run dev for tailwind
