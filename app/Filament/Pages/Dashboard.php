@@ -3,6 +3,7 @@
 namespace App\Filament\Pages;
 
 use App\Filament\Widgets\StatsOverviewWidget;
+use App\Filament\Widgets\DashboardFilte;
 
 class Dashboard extends \Filament\Pages\Dashboard
 {
@@ -10,6 +11,9 @@ class Dashboard extends \Filament\Pages\Dashboard
     {
         return [
             StatsOverviewWidget::class,
+            DashboardFilte::class,
+
         ];
     }
+    
 }

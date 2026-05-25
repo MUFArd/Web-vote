@@ -46,6 +46,7 @@ class VoteController extends Controller
         if (!$vote) {
             return redirect('/osismpk')->with('error', 'Gagal melakukan vote.');
         }
+        
         return redirect('/osismpk')->with('success', 'Vote berhasil dilakukan.');
     }
 

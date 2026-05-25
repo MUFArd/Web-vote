@@ -25,7 +25,7 @@ class PeriodeModelResource extends Resource
     protected static ?string $recordTitleAttribute = 'tahun_ajar';
     protected static ?string $slug = 'tahun_ajar';
     protected static ?string $modelLabel = 'tahun_ajar';
-    protected static ?string $navigationLabel = 'Pengguna';
+    protected static ?string $navigationLabel = 'Periode';
     protected static ?string $pluralModelLabel = 'tahun_ajar';
     public static function getNavigationGroup(): string
 {

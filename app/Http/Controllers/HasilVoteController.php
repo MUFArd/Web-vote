@@ -20,7 +20,7 @@ class HasilVoteController extends Controller
             ->get()
             ->groupBy('id_tahun_ajaran');
 
-        return view('hasil-vote', compact(
+        return view('progress-vote', compact(
             'kandidat_osis',
             'kandidat_mpk',
             'kandidat_osis_periode',

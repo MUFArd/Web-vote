@@ -12,10 +12,6 @@
 
 <body class="scroll-bar-none">
     @php
-        $top_osis = $kandidat_osis->first();
-        $top_mpk = $kandidat_mpk->first();
-        $others_osis = $kandidat_osis->skip(1);
-        $others_mpk = $kandidat_mpk->skip(1);
         $top_osis_periode = $kandidat_osis_periode->first();
         $top_mpk_periode = $kandidat_mpk_periode->first();
         $others_osis_periode = $kandidat_osis_periode->skip(1);
@@ -38,7 +34,7 @@
 
         <section class="hero flex flex-col h-screen gap-4 p-4">
             <div class="bg-white/30 backdrop-blur-sm rounded-xl text-center">
-                <p class="text-xs font-bold text-gray-700 tracking-widest uppercase">Voting Periode {{ $top_osis->periode }} </p>
+                <p class="text-xs font-bold text-gray-700 tracking-widest uppercase">Voting Periode {{ $kandidat_osis->first()->periode }} </p>
             </div>
             <div class="osis h-[100%] relative flex-1 flex backdrop-blur-sm rounded-xl gap-5 z-10"
                 data-aos="fade-right">
@@ -49,8 +45,11 @@
                     </span>
                 </div>
                 <div class="card other flex-3 flex gap-3 bg-red-400/30 p-2 rounded-xl justify-center" id="cards-osis">
-                    @foreach ($others_osis as $osis)
+                    @foreach ($kandidat_osis as $osis)
                         <div class="backdrop-blur-sm rounded-lg w-[80%] flex flex-col items-center gap-1 p-1.5 relative">
+                            <div class="circle absolute w-10 h-10 rounded-full bg-red-300 -left-4 -top-4 flex justify-center items-center font-bold text-xl ">
+                                <p class="text-xs font-bold text-red-600">0{{ $osis->nomer_urut }}</p>
+                            </div>
                             <div class="image-wrapper w-full h-42 overflow-hidden rounded-md border-1 border-black">
                                 <img src="{{ $osis->foto ? asset('kandidat_images/' . $osis->foto) : asset('images/dummy2.png') }}"
                                     alt="" class="w-full h-full object-cover object-top">
@@ -73,32 +72,6 @@
                             </div>
                         </div>
                     @endforeach
-                    @if($top_osis)
-                        <div
-                            class="card bg-red-600 backdrop-blur-sm rounded-xl w-[80%] flex flex-col items-center gap-1 p-1.5 relative">
-                            <div class="image-wrapper w-full h-42 overflow-hidden rounded-lg border-1 border-black">
-                                <img src="{{ $top_osis->foto ? asset('kandidat_images/' . $top_osis->foto) : asset('images/dummy2.png') }}"
-                                    alt="" class="w-full h-full object-cover object-top">
-                            </div>
-                            <div class="text w-full">
-                                <div class="nama shadow-lg bg-white rounded-lg w-full px-1 py-0.5 text-red-600">
-                                    <h1 class="text-xs text-center w-full font-bold">{{ $top_osis->nama_ketua }}</h1>
-                                    <h2 class="text-xs text-center w-full">{{ $top_osis->nama_wakil }}</h2>
-                                </div>
-                                <div class="flex gap-2 mt-1">
-                                    <div class="shadow-lg flex-1 bg-white rounded-lg p-1 text-red-600">
-                                        <p class="text-xs text-center w-full font-bold"
-                                            id="vote-osis-{{ $top_osis->id_kandidat }}">Votes : {{ $top_osis->total_vote }}
-                                        </p>
-                                    </div>
-                                    <div class="shadow-lg flex-1 bg-white rounded-lg p-1 text-red-600">
-                                        <p class="text-xs text-center w-full font-bold"
-                                            id="pct-osis-{{ $top_osis->id_kandidat }}">{{ $top_osis->persentase }}%</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    @endif
                 </div>
                 <div class="statistika flex-1 flex flex-col gap-2 p-2">
                     <div class="bg-white/30 backdrop-blur-sm rounded-xl p-2 text-center">
@@ -150,7 +123,7 @@
                     </span>
                 </div>
                 <div class="card other flex-3 flex gap-3 bg-green-400/30 p-2 rounded-xl justify-center" id="cards-mpk">
-                    @foreach ($others_mpk as $mpk)
+                    @foreach ($kandidat_mpk as $mpk)
                         <div class="backdrop-blur-sm rounded-lg w-[80%] flex flex-col items-center gap-1 p-1.5 relative">
                             <div class="image-wrapper w-full h-42 overflow-hidden rounded-md border-1 border-black">
                                 <img src="{{ $mpk->foto ? asset('kandidat_images/' . $mpk->foto) : asset('images/dummy2.png') }}"
@@ -174,31 +147,6 @@
                             </div>
                         </div>
                     @endforeach
-                    @if($top_mpk)
-                        <div
-                            class="card bg-green-600 backdrop-blur-sm rounded-xl w-[80%] flex flex-col items-center gap-1 p-1.5 relative">
-                            <div class="image-wrapper w-full h-42 overflow-hidden rounded-lg border-1 border-black">
-                                <img src="{{ $top_mpk->foto ? asset('kandidat_images/' . $top_mpk->foto) : asset('images/dummy2.png') }}"
-                                    alt="" class="w-full h-full object-cover object-top">
-                            </div>
-                            <div class="text w-full">
-                                <div class="nama shadow-lg bg-white rounded-lg w-full px-1 py-0.5 text-green-600">
-                                    <h1 class="text-xs text-center w-full font-bold">{{ $top_mpk->nama_ketua }}</h1>
-                                    <h2 class="text-xs text-center w-full">{{ $top_mpk->nama_wakil }}</h2>
-                                </div>
-                                <div class="flex gap-2 mt-1">
-                                    <div class="shadow-lg flex-1 bg-white rounded-lg p-1 text-green-600">
-                                        <p class="text-xs text-center w-full font-bold"
-                                            id="vote-mpk-{{ $top_mpk->id_kandidat }}">Votes : {{ $top_mpk->total_vote }}</p>
-                                    </div>
-                                    <div class="shadow-lg flex-1 bg-white rounded-lg p-1 text-green-600">
-                                        <p class="text-xs text-center w-full font-bold"
-                                            id="pct-mpk-{{ $top_mpk->id_kandidat }}">{{ $top_mpk->persentase }}%</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    @endif
                 </div>
                 <div class="statistika flex-1 flex flex-col gap-2 p-2">
                     <div class="bg-white/30 backdrop-blur-sm rounded-xl p-2 text-center">

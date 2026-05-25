@@ -28,7 +28,7 @@
         </div>
         <div class="flex gap-20 justify-center items-center mt-5">
 
-            <div class="card-wrapper w-54 h-68 [perspective:1000px]" data-aos="fade-up" data-aos-delay="100">
+            <div class="card-wrapper w-54 h-68 [perspective:1000px]" data-aos="fade-up" data-aos-delay="100" onclick="window.location.href='{{ url('/osis-vote') }}'">
                 <div id="flipCardOsis" class="{{ $sudahVoteOsis ? 'grayscale pointer-events-none' : '' }} relative w-full h-full duration-700 [transform-style:preserve-3d] cursor-pointer hover:scale-105 transition duration-300 ease-in-out">
                     <div class="absolute inset-0 shadow-lg flex flex-col justify-center items-center gap-2 p-3 rounded-xl bg-gradient-to-b from-red-500 via-red-200 to-white [backface-visibility:hidden]">
                         <img src="{{ asset('images/osis.png') }}" alt="Logo" class="w-28 h-28">
@@ -49,7 +49,7 @@
                     </div>
                 </div>
             </div>
-            <div class="card-wrapper w-54 h-68 [perspective:1000px]" data-aos="fade-up" data-aos-delay="200">
+            <div class="card-wrapper w-54 h-68 [perspective:1000px]" data-aos="fade-up" data-aos-delay="200" onclick="window.location.href='{{ url('/mpk-vote') }}'">
                 <div id="flipCardMpk" class="{{ $sudahVoteMpk ? 'grayscale pointer-events-none' : '' }} relative w-full h-full duration-700 [transform-style:preserve-3d] cursor-pointer hover:scale-105 transition duration-300 ease-in-out">
                     <div
                         class="absolute inset-0 shadow-lg flex flex-col justify-center gap-1 items-center p-2 rounded-xl bg-gradient-to-b from-green-600 via-green-100 to-white [backface-visibility:hidden]">

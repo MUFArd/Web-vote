@@ -17,4 +17,8 @@ class UserModel extends Authenticatable
         'password',
         'remember_token'
     ];
+    public function getAuthIdentifierName()
+    {
+        return 'id_user';
+    }
 }

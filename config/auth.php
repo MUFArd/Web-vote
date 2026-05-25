@@ -42,6 +42,10 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'filament' => [
+        'driver' => 'session',
+        'provider' => 'users',
+    ],
     ],
 
     /*
@@ -64,9 +68,12 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => env('AUTH_MODEL', User::class),
+            'model' => App\Models\User::class,
         ],
-
+        'musers' => [
+        'driver' => 'eloquent',
+        'model' => App\Models\UserModel::class,
+        ],
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',
